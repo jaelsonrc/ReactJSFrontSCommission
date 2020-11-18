@@ -4,7 +4,7 @@ Um CRUD simples para resolver um problema real de um amigo....
  <p>
  <strong>
 Sobre o Problema:
-  </strong>
+  </strong><br/>
  Anotar as ccomissões de qualquer produto ou serviço e gera um codigo para consultar o estado dessa comissão....
   </p>
  <p>
@@ -23,7 +23,7 @@ Sobre o Problema:
 </p>
 Aplicação SPA usando ReactJS para o front-end
 <p>  
-  Funcionalidades:
+  <strong> Funcionalidades:</strong>
   <ul>
     <li>Rotas autenticadas</li>
     <li>Validação de Formulario</li>
