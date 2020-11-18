@@ -31,6 +31,7 @@ Aplicação SPA usando ReactJS para o front-end
     <li>Componentes customizado</li>
     <li>Design responsivo</li>
     <li>Rooks</li>
+    <li>Typescript</li>
     <li>etc...</li>
    </ul>
 </p>
