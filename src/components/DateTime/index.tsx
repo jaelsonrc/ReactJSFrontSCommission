@@ -33,6 +33,7 @@ const DateTime: React.FC<Props> = ({
   const datepickerRef = useRef(null);
   const { fieldName, registerField, defaultValue, error } = useField(name);
   const [date, setDate] = useState(defaultValue || null);
+  const smallDevice = window.matchMedia('(max-width: 400px)').matches;
 
   const handleInputFocus = useCallback(() => {
     setIsFocused(true);
@@ -69,6 +70,7 @@ const DateTime: React.FC<Props> = ({
         selected={date}
         onChange={setDate}
         locale="pt-BR"
+        withPortal={smallDevice}
         {...rest}
       />
       {error && (
