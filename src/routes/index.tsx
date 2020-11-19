@@ -10,6 +10,7 @@ import Home from '../pages/Home';
 import Login from '../pages/Login';
 import Recovery from '../pages/Recovery';
 import ChangePassword from '../pages/ChangePassword';
+import Profile from '../pages/Profile';
 
 const Routes: React.FC = () => {
   return (
@@ -21,6 +22,7 @@ const Routes: React.FC = () => {
       <Route path="/app/adicionar" isPrivate component={Dados} />
       <Route path="/recuperarSenha" exact component={Recovery} />
       <Route path="/alterarSenha/:token" component={ChangePassword} />
+      <Route path="/perfil" isPrivate component={Profile} />
     </Switch>
   );
 };

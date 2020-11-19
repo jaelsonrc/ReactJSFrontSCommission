@@ -1,8 +1,9 @@
+/* eslint-disable react/button-has-type */
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { FiFilePlus, FiLogOut, FiEdit } from 'react-icons/fi';
+import { FiFilePlus, FiUser, FiEdit } from 'react-icons/fi';
 import { Form } from '@unform/web';
 import CardItem from '../../components/CardItem';
 import Cards from '../../components/Cards';
@@ -15,6 +16,7 @@ import api from '../../services/api';
 import formatValue from '../../utils/formatValue';
 import Button from '../../components/Button';
 import { useAuth } from '../../hooks/auth';
+import Dropdown from '../../components/Dropdown';
 
 interface Commission {
   id: string;
@@ -95,14 +97,16 @@ const Dashboard: React.FC = () => {
             <Link className="tbnLinkDefault" to="/app/adicionar">
               <FiFilePlus />
             </Link>
-            <Button
-              className="link"
-              onClick={() => {
-                signOut();
-              }}
-            >
-              <FiLogOut /> Sair
-            </Button>
+            <Dropdown icon={FiUser} btnClassName="tbnLinkDefault">
+              <Link to="/perfil">Meu Perfil</Link>
+              <button
+                onClick={() => {
+                  signOut();
+                }}
+              >
+                Sair
+              </button>
+            </Dropdown>
           </TitlePage>
           <Topo>
             <Input

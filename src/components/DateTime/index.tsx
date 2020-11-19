@@ -29,7 +29,6 @@ const DateTime: React.FC<Props> = ({
 }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
-
   const datepickerRef = useRef(null);
   const { fieldName, registerField, defaultValue, error } = useField(name);
   const [date, setDate] = useState(defaultValue || null);
