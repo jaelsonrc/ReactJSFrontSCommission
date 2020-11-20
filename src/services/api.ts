@@ -2,6 +2,7 @@ import axios, { AxiosRequestConfig } from 'axios';
 
 const api = axios.create({
   baseURL: 'https://netcore.app.br/scommission/api/',
+  // baseURL: 'https://localhost:5001/api/',
 });
 
 const getToken = () => {

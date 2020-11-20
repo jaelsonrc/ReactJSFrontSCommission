@@ -110,7 +110,12 @@ const Dashboard: React.FC = () => {
 
   return (
     <Container>
-      <Form onSubmit={() => {}} className="landing-page-form">
+      <Form
+        onSubmit={e => {
+          e.preventDefault();
+        }}
+        className="landing-page-form"
+      >
         <fieldset>
           <TitlePage title="Registros de Comissões">
             <Link className="tbnLinkDefault" to="/app/adicionar">
@@ -119,7 +124,9 @@ const Dashboard: React.FC = () => {
             <Dropdown icon={FiUser} btnClassName="tbnLinkDefault">
               <Link to="/perfil">Meu Perfil</Link>
               <button
-                onClick={() => {
+                type="button"
+                onClick={e => {
+                  e.preventDefault();
                   signOut();
                 }}
               >
@@ -132,7 +139,7 @@ const Dashboard: React.FC = () => {
               name="buscar"
               placeholder="Procurar"
               value={find}
-              onChange={(e: any) => {
+              onChange={e => {
                 setFind(e.target.value);
               }}
               onBlur={handleBlurDescription}
