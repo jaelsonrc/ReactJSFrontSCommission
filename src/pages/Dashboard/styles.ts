@@ -34,3 +34,22 @@ export const Filtro = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
+
+export const ItemList = styled.div`
+  display: flex;
+  align-items: center;
+
+  > svg {
+    width: 42px;
+    height: 42px;
+    color: #a8a8b3;
+    cursor: pointer;
+    &:hover {
+      color: red;
+    }
+
+    @media (max-width: 700px) {
+      display: none;
+    }
+  }
+`;

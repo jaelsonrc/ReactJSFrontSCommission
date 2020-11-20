@@ -3,20 +3,20 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { FiFilePlus, FiUser, FiEdit } from 'react-icons/fi';
+import { FiFilePlus, FiUser, FiEdit, FiTrash2 } from 'react-icons/fi';
 import { Form } from '@unform/web';
 import CardItem from '../../components/CardItem';
 import Cards from '../../components/Cards';
 import TitlePage from '../../components/TitlePage';
-import { Container, Topo } from './styles';
+import { Container, Topo, ItemList } from './styles';
 import Input from '../../components/Input';
 import Select from '../../components/Select';
 import { optionsStatus as options, getStatus } from '../../utils/statusEnum';
 import api from '../../services/api';
 import formatValue from '../../utils/formatValue';
-import Button from '../../components/Button';
 import { useAuth } from '../../hooks/auth';
 import Dropdown from '../../components/Dropdown';
+import { useToast } from '../../hooks/toast';
 
 interface Commission {
   id: string;
@@ -31,6 +31,7 @@ const Dashboard: React.FC = () => {
   const [commissions, setCommissions] = useState<Commission[]>([]);
   const { signOut } = useAuth();
   const [find, setFind] = useState<string>('');
+  const { addToast } = useToast();
 
   function setData(list: Commission[]) {
     const listCommissions = list.map((data: Commission) => ({
@@ -89,6 +90,24 @@ const Dashboard: React.FC = () => {
     findCommissions(null);
   }, [findCommissions]);
 
+  const handleDelete = useCallback(
+    async (id: string) => {
+      try {
+        await api.delete(`/commission/${id}`);
+        const list = commissions.filter(f => f.id !== id);
+        setCommissions([...list]);
+      } catch (err) {
+        addToast({
+          type: 'error',
+          title: 'Erro ao enviar',
+          description:
+            'Ocorreu um erro ao processar a requisição. Informe o administrador do sistema',
+        });
+      }
+    },
+    [addToast, commissions],
+  );
+
   return (
     <Container>
       <Form onSubmit={() => {}} className="landing-page-form">
@@ -128,14 +147,20 @@ const Dashboard: React.FC = () => {
           </Topo>
           <Cards>
             {commissions.map(commission => (
-              <CardItem
-                key={commission.id}
-                to={`/app/editar/${commission.id}`}
-                icon={FiEdit}
-                title={`${commission.description} - ${commission.order}`}
-                subtitle={`${commission.date} - ${commission.situation}`}
-                text={commission.value}
-              />
+              <ItemList key={commission.id}>
+                <FiTrash2
+                  onClick={() => {
+                    handleDelete(commission.id);
+                  }}
+                />
+                <CardItem
+                  to={`/app/editar/${commission.id}`}
+                  icon={FiEdit}
+                  title={`${commission.description} - ${commission.order}`}
+                  subtitle={`${commission.date} - ${commission.situation}`}
+                  text={commission.value}
+                />
+              </ItemList>
             ))}
           </Cards>
         </fieldset>

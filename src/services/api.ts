@@ -1,12 +1,12 @@
 import axios, { AxiosRequestConfig } from 'axios';
 
-const getToken = () => {
-  return localStorage.getItem('@AppCommission:token');
-};
-
 const api = axios.create({
   baseURL: 'https://netcore.app.br/scommission/api/',
 });
+
+const getToken = () => {
+  return localStorage.getItem('@AppCommission:token');
+};
 
 api.interceptors.request.use(async (config: AxiosRequestConfig) => {
   const token = getToken();
