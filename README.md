@@ -36,4 +36,6 @@ Aplicação SPA usando ReactJS para o front-end
    </ul>
 </p>
 Objetivo do projeto é para fins de estudo dessa tecnologia incrivel que é universo React e contribuir para pessoas que esteja estudando essa tecnologias
-QUalquer duvida entre contato. jaelsonrc@ymail.com - https://www.linkedin.com/in/jaelsonrc/
+QUalquer duvida entre contato. jaelsonrc@ymail.com - https://www.linkedin.com/in/jaelsonrc/ <br/><br/>
+
+<strong>Use o yarn para roda o projeto</strong>
